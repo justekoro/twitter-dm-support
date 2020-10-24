@@ -4,7 +4,7 @@
   "description": "An open source platform that allows you to access twitter dms, and make them as tickets.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node index"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,8 @@
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "fastify": "^3.7.0",
+    "fastify-cookie": "^4.1.0",
+    "fastify-formbody": "^5.0.0",
     "fastify-session": "^5.2.0",
     "fastify-static": "^3.3.0",
     "mongoose": "^5.10.9",

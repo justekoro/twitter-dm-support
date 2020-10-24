@@ -17,6 +17,9 @@ app.register(require("./api/routes"));
 app.register(require('fastify-static'), {
     root: __dirname+"/views",
 });
+app.register(require('fastify-formbody'));
+app.register(require('fastify-cookie'));
+app.register(require('fastify-session'), {secret: process.env.SESSION_SECRET});
 
 // Connect database
 mongoose.connect(process.env.MONGO_URL, {
@@ -24,8 +27,8 @@ mongoose.connect(process.env.MONGO_URL, {
     useCreateIndex: true,
     useUnifiedTopology: true,
 })
-    .catch(error => {
-        throw new Error("Unable to connect to the database!\n", error)
+    .catch(() => {
+        throw new Error("Unable to connect to the database!")
     })
     .then(() => {
         console.log("Database successfully connected!")

@@ -3,12 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello!</title>
+    <script>
+        window.onload = () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const msg = urlParams.get("message");
+            const prefill = urlParams.get("prefill");
+            if (prefill) {
+                document.getElementById("username").value = prefill;
+            }
+            if (msg) {
+                document.getElementById("message").value = msg;
+            }
+        }
+    </script>
 </head>
 <body>
     <center>
         <h1>Hey!</h1>
         <h3>Please login using your creditentials</h3>
-        <input type="text" name="username" placeholder="Username"><input type="password" name="password" placeholder="Password">
+        <h4 id="message" style="color: red;"></h4>
+        <form action="/session" method="POST">
+            <input type="text" name="username" placeholder="Username" id="username">
+            <input type="password" name="password" placeholder="Password" id="password">
+            <br/>
+            <input type="submit" value="Log in">
+        </form>
     </center>
 </body>
 </html>
