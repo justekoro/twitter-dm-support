@@ -10,9 +10,6 @@ const mongoose = require('mongoose');
 // Create app
 const app = fastify();
 
-// Launch RestAPI routes
-app.register(require("./api/routes"));
-
 // Register fastify modules
 app.register(require('fastify-static'), {
     root: __dirname+"/views",
@@ -33,6 +30,9 @@ mongoose.connect(process.env.MONGO_URL, {
     .then(() => {
         console.log("Database successfully connected!")
     });
+
+// Launch RestAPI routes
+app.register(require("./api/routes"));
 
 // Listen
 app.listen(process.env.PORT, (error) => {
