@@ -12,9 +12,11 @@ module.exports = (req, res) => {
         return;
     }
     umodel.findOne({ username }).then(result => {
-
+        if (!result) {
+            res.redirect("/login?message=The%20user%20"+username+"%20does%20not%20exist")
+        }
     })
-        .catch((e) => {
-            res.redirect("/login?message=An%20internal%20error%20occured,%20please%20retry");
-        });
+    .catch((e) => {
+        res.redirect("/login?message=An%20internal%20error%20occured,%20please%20retry");
+    });
 }
