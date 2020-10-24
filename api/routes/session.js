@@ -1,0 +1,16 @@
+const
+    bcrypt = require('bcrypt'),
+    umodel = require('../../db/models/users');
+
+module.exports = (req, res) => {
+    const { username, password } = req.body;
+    if (!username || !password) {
+        let url = "/login?message=Some%20fields%20are%20missing";
+        if (username) url+=`&prefill=${username}`;
+        res.redirect(url);
+        return;
+    }
+    umodel.findOne({ username }).then(result => {
+
+    });
+}
