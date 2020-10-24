@@ -15,5 +15,17 @@
   "bugs": {
     "url": "https://github.com/korobaka/twitter-dm-support/issues"
   },
-  "homepage": "https://github.com/korobaka/twitter-dm-support#readme"
+  "homepage": "https://github.com/korobaka/twitter-dm-support#readme",
+  "devDependencies": {
+    "eslint": "^7.11.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.7.0",
+    "fastify-session": "^5.2.0",
+    "fastify-static": "^3.3.0",
+    "mongoose": "^5.10.9",
+    "twit": "^2.2.11"
+  }
 }
