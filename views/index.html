@@ -5,6 +5,15 @@
     <title>Support Main Page</title>
 </head>
 <body>
+    <div id="supportreqs">
 
+    </div>
+    <script>
+        fetch("/dms").then(res => {
+            res.json().then(json => {
+                console.log(json);
+            });
+        });
+    </script>
 </body>
 </html>
