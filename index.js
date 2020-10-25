@@ -16,7 +16,14 @@ app.register(require('fastify-static'), {
 });
 app.register(require('fastify-formbody'));
 app.register(require('fastify-cookie'));
-app.register(require('fastify-session'), {secret: process.env.SESSION_SECRET});
+app.register(require('fastify-session'), {
+    secret: process.env.SESSION_SECRET,
+    cookie: {
+        secure: false,
+        hostOnly: false,
+        sameSite: false,
+    },
+});
 
 // Connect database
 mongoose.connect(process.env.MONGO_URL, {
