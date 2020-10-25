@@ -28,7 +28,6 @@ module.exports = (req, res) => {
                 return;
             }
             req.session.username = username;
-            console.log(req.session);
             res.redirect("/");
         });
     })
