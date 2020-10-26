@@ -4,7 +4,8 @@
   "description": "An open source platform that allows you to access twitter dms, and make them as tickets.",
   "main": "index.js",
   "scripts": {
-    "dev": "node index"
+    "dev": "node index",
+    "start": "node index"
   },
   "repository": {
     "type": "git",

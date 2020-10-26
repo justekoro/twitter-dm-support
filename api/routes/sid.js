@@ -22,18 +22,9 @@ module.exports = (req, res) => {
                 );
                 return;
             }
-            const t = require('../../twitter/twitClient');
-            t.get("direct_messages/events/list", {}, (err, data) => {
-                if (err) {
-                    console.error(err);
-                    res.send(
-                        {
-                            status: 500,
-                            message: "Internal Server Error",
-                        }
-                    );
-                }
-                res.send(data.events);
+            res.send({
+                status: 200,
+                sid: process.env.USER_ID,
             });
         })
         .catch(() => {
@@ -41,7 +32,7 @@ module.exports = (req, res) => {
                 {
                     status: 500,
                     message: "Internal Server Error",
-            }
+                }
             );
         });
 };

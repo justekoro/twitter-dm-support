@@ -11,7 +11,36 @@
     <script>
         fetch("/dms").then(res => {
             res.json().then(json => {
-                console.log(json);
+                // Parse data
+                const a = new Array();
+                json.forEach(s => {
+                    a.push({
+                        from: s.message_create.sender_id,
+                        to: s.message_create.target.recipient_id,
+                        created: s.created_timestamp,
+                        content: s.message_create.message_data.text,
+                    });
+                });
+                window.jsp = {}
+                fetch("/sid").then(r => {
+                    r.json().then(j => {
+                        a.forEach(s => {
+                            if (s.from == j.sid) {
+                                if (!window.jsp[s.to]) {
+                                    window.jsp[s.to] = [a]
+                                } else {
+                                    window.jsp[s.to].push(a);
+                                }
+                            } else {
+                                if (!window.jsp[s.from]) {
+                                    window.jsp[s.from] = [a]
+                                } else {
+                                    window.jsp[s.from].push(a);
+                                }
+                            }
+                        });
+                    });
+                });
             });
         });
     </script>
